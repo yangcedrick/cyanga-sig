@@ -1,0 +1,227 @@
+/* Style commun : n'utilise que les variables de tokens.css */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font: 400 var(--corps)/var(--ligne) var(--police-texte);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--lien); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--rayon-petit); }
+h1, h2, h3 { font-family: var(--police-titre); margin: 0; color: var(--texte); }
+h1 { font-size: var(--taille-titre-1); line-height: 1.08; font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: var(--taille-titre-2); line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: var(--taille-titre-3); line-height: 1.25; font-weight: 500; }
+p { margin: 0 0 16px; }
+
+.cadre { max-width: var(--largeur-max); margin: 0 auto; padding: 0 20px; }
+.etiquette {
+  font: 500 var(--taille-etiquette)/1.3 var(--police-mono);
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--texte-doux);
+}
+.saut { position: absolute; left: -9999px; }
+.saut:focus { left: 16px; top: 12px; z-index: 50; background: var(--surface); padding: 8px 12px; }
+
+/* ---------- En-tête ---------- */
+.entete { position: sticky; top: 0; z-index: 20; background: var(--fond); border-bottom: var(--trait); }
+.entete .cadre { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--texte); }
+.logo b { display: block; font: 700 18px/1 var(--police-titre); letter-spacing: -0.01em; }
+.logo small { display: block; margin-top: 4px; font: 500 11px/1 var(--police-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--texte-doux); }
+.menu-bouton {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 0 14px; border: 1.5px solid var(--neutre-900); border-radius: var(--rayon-petit);
+  background: var(--surface); color: var(--texte); font: 600 15px/1 var(--police-texte); cursor: pointer;
+}
+.menu { display: none; }
+.menu.ouvert {
+  display: block; position: absolute; left: 0; right: 0; top: 68px;
+  background: var(--fond); border-bottom: var(--trait); padding: 8px 20px 20px;
+}
+.menu a {
+  display: flex; align-items: center; min-height: 52px; border-bottom: var(--trait);
+  color: var(--texte); text-decoration: none; font: 500 18px/1 var(--police-titre);
+}
+.menu a[aria-current="page"] { color: var(--action); }
+.menu .bouton { margin-top: 16px; width: 100%; justify-content: center; border-bottom: 0; }
+
+@media (min-width: 900px) {
+  .menu-bouton { display: none; }
+  .menu, .menu.ouvert { display: flex; align-items: center; gap: 28px; position: static; padding: 0; border: 0; background: none; }
+  .menu a { min-height: 44px; border: 0; font: 600 15px/1 var(--police-texte); }
+  .menu a[aria-current="page"] { color: var(--texte); box-shadow: inset 0 -2px 0 var(--action); }
+  .menu .bouton { margin: 0; width: auto; min-height: 44px; padding: 0 18px; box-shadow: none; }
+  .menu .bouton:hover { color: var(--surface); }
+}
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 48px; padding: 0 22px; border-radius: var(--rayon-petit);
+  font: 600 16px/1.1 var(--police-texte); text-decoration: none; text-align: center;
+  border: 1.5px solid transparent; cursor: pointer;
+  transition: background var(--duree) ease-out, transform 150ms ease-out;
+}
+.bouton:active { transform: translateY(1px); }
+.bouton-action, .menu a.bouton-action { background: var(--action); color: var(--surface); }
+.bouton-action:hover { background: var(--action-survol); }
+.bouton-second { background: var(--surface); color: var(--texte); border-color: var(--neutre-900); }
+.bouton-second:hover { background: var(--neutre-100); }
+.bouton svg { flex: none; }
+.rangee { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* ---------- Bandeau d'accueil ---------- */
+.une { position: relative; overflow: hidden; border-bottom: var(--trait); }
+.une canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.une .cadre { position: relative; padding-top: 150px; padding-bottom: 56px; }
+.une-texte { max-width: 660px; background: var(--fond); padding-top: 16px; }
+.une .etiquette { display: inline-block; margin-bottom: 18px; }
+.chapo { font-size: 19px; color: var(--texte-doux); margin: 20px 0 32px; max-width: 34em; }
+@media (min-width: 900px) {
+  .une .cadre { padding-top: 96px; padding-bottom: 104px; }
+  .une-texte { padding: 8px 0; }
+}
+
+/* Bandeau de page intérieure */
+.tete-page { position: relative; overflow: hidden; border-bottom: var(--trait); }
+.tete-page canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tete-page .cadre { position: relative; padding-top: 110px; padding-bottom: 48px; }
+.tete-page .bloc-titre { background: var(--fond); padding-top: 12px; max-width: 720px; }
+.tete-page .etiquette { display: block; margin-bottom: 14px; }
+.tete-page p { font-size: 19px; color: var(--texte-doux); margin: 16px 0 0; }
+@media (min-width: 900px) {
+  .tete-page .cadre { padding-top: 80px; padding-bottom: 72px; }
+}
+
+/* ---------- Sections ---------- */
+.section { padding: 72px 0; border-bottom: var(--trait); }
+.section-alterne { background: var(--fond-alterne); }
+@media (min-width: 900px) { .section { padding: 112px 0; } }
+.entete-section { display: flex; gap: 14px; align-items: baseline; margin-bottom: 16px; }
+.entete-section .num { font: 500 14px/1 var(--police-mono); color: var(--action); }
+.intro { color: var(--texte-doux); max-width: 38em; margin-bottom: 40px; }
+.lien-suite { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 32px; font-weight: 600; }
+
+/* ---------- Cartes ---------- */
+.grille { display: grid; gap: 16px; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 640px) { .grille { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+@media (min-width: 1000px) { .grille-3 { grid-template-columns: repeat(3, 1fr); } }
+.grille-egale { align-items: stretch; }
+.carte { background: var(--surface); border: var(--trait); border-radius: var(--rayon-grand); padding: 28px; }
+.carte p { color: var(--texte-doux); margin: 10px 0 0; }
+.picto {
+  width: 44px; height: 44px; margin-bottom: 22px;
+  display: grid; place-items: center;
+  border: 1.5px solid var(--lagune-encre); border-radius: var(--rayon-petit); color: var(--lagune-encre);
+}
+.carte ul { margin: 16px 0 0; padding-left: 20px; color: var(--texte-doux); }
+.carte li { margin-bottom: 6px; }
+
+.realisation { padding: 0; overflow: hidden; }
+.realisation a.image { display: block; border-bottom: var(--trait); }
+.realisation img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: left top; }
+.realisation .corps { padding: 20px 24px 24px; }
+.realisation h3 { margin-top: 8px; }
+.realisation-grande img { aspect-ratio: auto; }
+
+/* Points forts : liste numérotée au trait */
+.atouts { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+@media (min-width: 800px) { .atouts { grid-template-columns: repeat(2, 1fr); column-gap: 48px; } }
+.atouts li { border-top: var(--trait); padding: 24px 0; display: grid; grid-template-columns: 44px 1fr; gap: 8px; }
+.atouts .num { font: 500 14px/1.9 var(--police-mono); color: var(--action); }
+.atouts h3 { margin-bottom: 6px; }
+.atouts p { color: var(--texte-doux); margin: 0; }
+
+/* Chiffre clé */
+.chiffre { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 0 0 40px; }
+.chiffre b { font: 700 clamp(48px, 9vw, 80px)/1 var(--police-titre); letter-spacing: -0.03em; }
+.chiffre span { color: var(--texte-doux); max-width: 22em; }
+
+/* Outils */
+.outils { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 24px 0 0; }
+.outils li { font: 500 14px/1 var(--police-mono); padding: 10px 12px; border: 1.5px solid var(--lagune-encre); color: var(--lagune-encre); border-radius: var(--rayon-petit); }
+
+/* Texte long */
+.texte-long { max-width: 40em; }
+.texte-long p { font-size: 18px; }
+.deux-colonnes { display: grid; gap: 40px; }
+@media (min-width: 900px) { .deux-colonnes { grid-template-columns: 5fr 7fr; gap: 72px; } }
+
+/* Étapes */
+.etapes { list-style: none; margin: 0; padding: 0; counter-reset: etape; display: grid; gap: 0; }
+@media (min-width: 900px) { .etapes { grid-template-columns: repeat(4, 1fr); column-gap: 24px; } }
+.etapes li { counter-increment: etape; border-top: 2px solid var(--neutre-900); padding: 20px 0 28px; }
+.etapes li::before { content: "0" counter(etape); display: block; font: 500 14px/1 var(--police-mono); color: var(--action); margin-bottom: 14px; }
+.etapes h3 { font-size: 19px; margin-bottom: 6px; }
+.etapes p { color: var(--texte-doux); margin: 0; font-size: 16px; }
+
+/* Questions */
+details { border-top: var(--trait); padding: 18px 0; }
+details:last-of-type { border-bottom: var(--trait); }
+summary { font: 500 19px/1.3 var(--police-titre); cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; min-height: 44px; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font: 500 20px/1 var(--police-mono); color: var(--action); }
+details[open] summary::after { content: "–"; }
+details p { color: var(--texte-doux); margin: 10px 0 0; max-width: 40em; }
+
+/* Contact */
+.contacts { display: grid; gap: 16px; }
+@media (min-width: 640px) { .contacts { grid-template-columns: repeat(2, 1fr); } }
+.contact-ligne { display: flex; gap: 16px; align-items: flex-start; }
+.contact-ligne .picto { margin: 0; flex: none; }
+.contact-ligne a { font-weight: 600; word-break: break-word; }
+.contact-ligne p { margin: 4px 0 0; }
+
+/* ---------- Appel final ---------- */
+.appel { background: var(--fond-sombre); color: var(--neutre-50); padding: 72px 0; }
+.appel h2 { color: var(--neutre-50); max-width: 18em; }
+.appel p { color: var(--neutre-300); max-width: 34em; margin: 16px 0 28px; }
+.appel .bouton-second { background: transparent; color: var(--neutre-50); border-color: var(--neutre-400); }
+.appel .bouton-second:hover { background: var(--neutre-900); }
+
+/* ---------- Pied de page ---------- */
+.pied { padding: 48px 0 32px; font-size: var(--taille-petit); color: var(--texte-doux); }
+.pied .colonnes { display: grid; gap: 28px; }
+@media (min-width: 800px) { .pied .colonnes { grid-template-columns: 2fr 1fr 1fr; } }
+.pied h2 { font: 500 var(--taille-etiquette)/1.3 var(--police-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--texte-doux); margin-bottom: 12px; }
+.pied ul { list-style: none; margin: 0; padding: 0; }
+.pied li { margin-bottom: 4px; }
+.pied a { color: var(--texte); display: inline-block; padding: 6px 0; }
+.pied .bas { margin-top: 32px; padding-top: 20px; border-top: var(--trait); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+/* Bouton WhatsApp flottant sur téléphone */
+.flottant {
+  position: fixed; right: 16px; bottom: 16px; z-index: 30;
+  width: 56px; height: 56px; border-radius: var(--rayon-grand);
+  display: grid; place-items: center;
+  background: var(--action); color: var(--surface);
+}
+.flottant:hover { background: var(--action-survol); }
+@media (min-width: 900px) { .flottant { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .bouton { transition: none; }
+}
+
+/* Téléphone : cartes de service compactes (pictogramme à gauche du titre) */
+@media (max-width: 639px) {
+  .grille-egale .carte { display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; padding: 20px; }
+  .grille-egale .picto { margin: 0; grid-row: span 2; }
+  .grille-egale .carte h3 { align-self: center; }
+  .grille-egale .carte p, .grille-egale .carte ul { grid-column: 2; }
+  .grille-egale .carte p { margin-top: 6px; }
+  .grille { gap: 12px; }
+}
+@media (max-width: 420px) {
+  .logo b { font-size: 15px; }
+  .logo small { font-size: 10px; }
+  .logo svg { width: 28px; height: 28px; }
+}
+@media (max-width: 639px) {
+  .grille-egale .carte:has(ul) p, .grille-egale .carte ul { grid-column: 1 / -1; }
+  .grille-egale .carte:has(ul) p { margin-top: 14px; }
+  .grille-egale .carte:has(ul) .picto { grid-row: auto; }
+}

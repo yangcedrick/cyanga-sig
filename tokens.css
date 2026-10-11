@@ -1,0 +1,73 @@
+/* Identité : Cédric YANGANGOUSSOU, Consultant SIG
+   Parti pris : une carte de terrain bien faite, claire, précise, ancrée à Abidjan,
+   où les points relevés se relient pour donner du sens. */
+:root {
+  /* Accent : rouge latérite, la couleur des limites administratives sur ses cartes
+     et de la terre rouge ouest-africaine. Réservé à l'action principale. */
+  --accent-50: #FCF5F3;
+  --accent-100: #F9E9E7;
+  --accent-200: #F3D3CD;
+  --accent-300: #EBADA3;
+  --accent-400: #E27E6F;
+  --accent-500: #D94D3A;
+  --accent-600: #BE3727;
+  --accent-700: #972C21;
+  --accent-800: #6E231C;
+  --accent-900: #471915;
+  --accent-950: #2A100E;
+
+  /* Neutres : papier de carte, teintés chaud (34°) */
+  --neutre-50: #FAF8F5;
+  --neutre-100: #F3F0EC;
+  --neutre-200: #E5E1DC;
+  --neutre-300: #CDC8C1;
+  --neutre-400: #AFA9A1;
+  --neutre-500: #928B81;
+  --neutre-600: #7B746B;
+  --neutre-700: #635D54;
+  --neutre-800: #4C463E;
+  --neutre-900: #332F28;
+  --neutre-950: #201D18;
+
+  /* Cartographie : la lagune (eau des cartes) et la route, pour les illustrations uniquement */
+  --lagune-clair: #DCEFF6;
+  --lagune: #9FD3E6;
+  --lagune-encre: #1E5A6E;
+  --route: #F2D46B;
+
+  /* Sens */
+  --succes: #3C7A3A;  --attention: #A86A10;  --erreur: #B3261E;
+
+  /* Rôles */
+  --fond: var(--neutre-50);
+  --fond-alterne: var(--neutre-100);
+  --surface: #FFFFFF;
+  --texte: var(--neutre-900);
+  --texte-doux: var(--neutre-700);
+  --bordure: var(--neutre-200);
+  --bordure-champ: var(--neutre-500);
+  --action: var(--accent-600);
+  --action-survol: var(--accent-700);
+  --lien: var(--accent-700);
+  --focus: var(--accent-500);
+  --fond-sombre: var(--neutre-950);
+
+  /* Typographie */
+  --police-titre: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --police-texte: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --police-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --corps: 17px;  --ligne: 1.6;
+  --taille-titre-1: clamp(34px, 7vw, 56px);
+  --taille-titre-2: clamp(26px, 4.5vw, 36px);
+  --taille-titre-3: 21px;
+  --taille-petit: 14px;
+  --taille-etiquette: 13px;
+
+  /* Formes et espace : séparation au trait, pas d'ombre */
+  --rayon-petit: 4px;   /* boutons, champs, étiquettes */
+  --rayon-grand: 14px;  /* cartes, images */
+  --pas: 4px;
+  --trait: 1px solid var(--bordure);
+  --largeur-max: 1160px;
+  --duree: 220ms;
+}
